@@ -2,7 +2,17 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-
+import { CloudTasksClient } from '@google-cloud/tasks'; 
+import * as fs from 'fs';
+ 
+export const getServerSideProps = (async () => {
+  const tasksClient = new CloudTasksClient({credentials: {'your-auth'}}); 
+  const iterable = await tasksClient.listQueues({parent: 'your-parent'});
+  for await (const response of iterable) {
+      console.log(response);
+  }
+  return {};
+})
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
