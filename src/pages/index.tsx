@@ -6,11 +6,11 @@ import { CloudTasksClient } from '@google-cloud/tasks';
 import * as fs from 'fs';
  
 export const getServerSideProps = (async () => {
-  const tasksClient = new CloudTasksClient({credentials: {'your-auth'}}); 
-  const iterable = await tasksClient.listQueues({parent: 'your-parent'});
-  for await (const response of iterable) {
-      console.log(response);
-  }
+  const tasksClient = new CloudTasksClient({credentials: {}}); 
+  console.log(await tasksClient.createTask({parent: '', task: {httpRequest: {url: 'https://random.com/url'}}}));
+  // for await (const response of iterable) {
+  //     console.log(response);
+  // }
   return {};
 })
 const inter = Inter({ subsets: ["latin"] });
