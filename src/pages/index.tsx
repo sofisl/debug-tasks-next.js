@@ -7,7 +7,7 @@ import * as fs from 'fs';
  
 export const getServerSideProps = (async () => {
   const tasksClient = new CloudTasksClient({credentials: 'YOUR_CREDENTIALS_KEY'}); 
-  console.log(await tasksClient.createTask({parent: 'YOUR_PROJECT', task: {httpRequest: {url: 'https://random.com/url'}}}));
+  console.log(await tasksClient.listQueues({parent: 'YOUR_PROJECT'});
   // for await (const response of iterable) {
   //     console.log(response);
   // }
